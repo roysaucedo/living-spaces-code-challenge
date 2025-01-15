@@ -64,7 +64,7 @@
 ## Resource References
 
 ### Assets & Documentation
-- Static Image Assets: [Google Drive Folder](https://drive.google.com/drive/folders/1sH7VPsABdlvINT1b76iHvMUiMB-vOMfGk?usp=sharing)
+- Static Image Assets: [Google Drive Folder](https://drive.google.com/drive/folders/1sH7VPsABdlvINT1b76iHvMUiMBvOMfGk)
 - TVmaze API Documentation: [TVmaze API](https://www.tvmaze.com/api)
 
 ### Technical Resources
