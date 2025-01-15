@@ -4,8 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Living Spaces Code Challenge</title>
+    <link rel="icon" href="https://fav.farm/🖥" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #2E083D;
+            color: #ffffff;
+        }
+        .nav {
+            background-color: #000;
+            padding: 20px;
+        }
+        .nav-item-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-item-container a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+
+        .wrapper {
+            max-width: 1620px;
+            margin: auto;
+        }
+        
+        .section {
+            padding: 20px 20px;
+        }
+        .section-h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .now-playing-flexbox {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .now-playing-flexbox div {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+
+        .now-playing-flexbox div > a {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .now-playing-flexbox div > a > img {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+        }
+        
+        /* DESKTOP STYLES */
+        @media screen and (min-width: 580px) {
+            .section {
+                padding: 40px 20px;
+            }
+            .now-playing-flexbox {
+                flex-direction: row;
+            }
+            
+        }
+
+        
+    </style>
 </head>
+
 <body>
-    <h1>HELLO WORLD</h1>
+
+    <nav class="nav">
+        <div class="wrapper nav-item-container">
+            <img src="/assets/2308_gogglebox_logo.png" alt="Gogglebox Logo">
+            <a href="#">Sign In</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="wrapper">
+            <section class="section hero-section">
+                <a href="#">
+                    <picture class="hero-image">
+                        <source srcset="/assets/2308_desktop_hero.jpg" media="(min-width: 580px)" />
+                        <img src="/assets/2308_mobile_hero.jpg" alt="MDN" />
+                    </picture>
+                </a>
+            </section>
+
+            <section class="section now-playing-section">
+                <h2 class="section-h2">Now Playing</h2>
+
+                <div class="now-playing-flexbox" style="background-color: white;">
+                    <div style="background-color: blue;">
+                        <a href="#"><img src="/assets/2308_01_now_playing.jpg" alt=""></a>
+                    </div>
+                    <div style="background-color: red;">
+                        <a href=""><img src="/assets/2308_02_now_playing.jpg" alt=""></a>
+                        <a href=""><img src="/assets/2308_03_now_playing.jpg" alt=""></a>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="section tomorrow-schedule-section">
+                <h2 class="section-h2">Tomorrow's Schedule</h2>
+            </section>
+
+        </div>
+
+    </main>
+    
+    <footer>
+        <p>&copy; Gogglebox <span id="currentYear"></span> All Rights Reserved</p>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            $('#currentYear').text(new Date().getFullYear());
+        });
+    </script>
 </body>
 </html>
