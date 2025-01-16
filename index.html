@@ -92,7 +92,7 @@
 
         .tomorrow-schedule-carousel {
             display: flex;
-            padding: 10px 0px;
+            padding: 10px 0px 30px 0px;
             list-style: none;
             overflow-x: scroll;
             /* scroll-snap-type: x mandatory; */
@@ -129,6 +129,7 @@
 
         .tomorrow-schedule-carousel::-webkit-scrollbar-track {
             background: black;
+
             margin: 0px 10px;
         }
 
@@ -201,12 +202,15 @@
             .tomorrow-schedule-carousel-container {
                 position: relative;
             }
+            .tomorrow-schedule-carousel {
+                padding: 10px 0px 60px 0px;
+            }
             
             .gradient-overlay {
                 position: absolute;
                 top: 0;
                 right: 0;
-                width: 150px;
+                width: 100px;
                 height: calc(100% - 20px);
                 background: linear-gradient(to right, transparent, #2E083D);
                 pointer-events: none;
