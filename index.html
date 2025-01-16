@@ -203,6 +203,9 @@
             .tomorrow-schedule-card:first-child {
                 margin-left: 0px;
             }
+            .tomorrow-schedule-card:last-child {
+                margin-right: 60px;
+            }
             .tomorrow-schedule-carousel-container {
                 position: relative;
             }
@@ -279,26 +282,32 @@
     <script>
         $(document).ready(function() {
             // TOMORROW'S SCHEDULE
-            const tomorrow = new Date();
+            const today = new Date();                        
+            const tomorrow = new Date(today);                
             tomorrow.setDate(tomorrow.getDate() + 1);
-            const formattedDate = tomorrow.toISOString().split('T')[0];
+            const formattedDate = tomorrow.toISOString().split('T')[0]; 
             
-
             let apiURL = `https://api.tvmaze.com/schedule?country=US&date=${formattedDate}`;
 
-
             $.ajax({url: apiURL, success: function(data){
-                const slicedData = data.slice(0, 24);
+                const maxShows = 24;
+                const slicedData = data.slice(0, maxShows);
                 slicedData.forEach(show => {
                     $('.tomorrow-schedule-carousel').append(
                         `
                             <div class="tomorrow-schedule-card">
-                                <img class="tomorrow-schedule-img" src="${show.show.image.original}" loading="lazy" alt="TV Show: ${show.show.name} - Title Artwork">
+                                <img class="tomorrow-schedule-img" 
+                                    src="${show.show.image.original}" 
+                                    loading="lazy" alt="TV Show: ${show.show.name} - Title Artwork">
                             </div>
                         `
                     )
                 });
-            }});
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching TV schedule:', error);
+        }
+        });
 
             // FOOTER - GET CURRENT YEAR
             $('#currentYear').text(new Date().getFullYear());
