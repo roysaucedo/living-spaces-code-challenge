@@ -26,7 +26,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 20px;
         }
 
         .nav-logo {
@@ -58,6 +57,7 @@
             display: block;
             border-radius: 6px;
         }
+
         .hero-section {
              padding: 10px 0px;
         }
@@ -65,27 +65,103 @@
         .now-playing-flexbox {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 20px;
         }
 
         .now-playing-flexbox div {
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            row-gap: 10px;
+            gap: 20px;
         }
 
         .now-playing-flexbox div > a {
-            flex-grow: 1;
+            flex: 1;
             display: flex;
-            flex-direction: column;
         }
 
         .now-playing-flexbox div > a > img {
-            flex-grow: 1;
+            flex: 1;
+        }
+        .tomorrow-schedule-section {
+            padding: 20px 0px;
+        }
+
+        .tomorrow-schedule-h2 {
+            padding: 0px 20px;
+        }
+
+        .tomorrow-schedule-carousel {
+            display: flex;
+            padding: 10px 0px;
+            list-style: none;
+            overflow-x: scroll;
+            /* scroll-snap-type: x mandatory; */
+        }
+        .tomorrow-schedule-card {
             display: flex;
             flex-direction: column;
+            flex: 0 0 70%;
+            scroll-snap-align: start;
+            transition: all 0.2s;
         }
+
+        .tomorrow-schedule-card:first-child {
+            margin-left: 20px;
+        }
+
+        .tomorrow-schedule-card:not(:last-child) {
+            margin-right: 20px;
+        }
+        .tomorrow-schedule-carousel::-webkit-scrollbar {
+            height: 12px;
+            padding: 4px;
+        }
+
+        .tomorrow-schedule-carousel::-webkit-scrollbar-thumb,
+        .tomorrow-schedule-carousel::-webkit-scrollbar-track {
+            border-radius: 100px;
+        }
+
+        .tomorrow-schedule-carousel::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #FF5C00 , #CB2DF0);
+            border: 2px solid black;
+        }
+
+        .tomorrow-schedule-carousel::-webkit-scrollbar-track {
+            background: black;
+            margin: 0px 10px;
+        }
+
+        @media (min-width: 500px) {
+        .tomorrow-schedule-card {
+            flex-basis: calc(50% - 10px);
+        }
+
+        .tomorrow-schedule-card:not(:last-child) {
+            margin-right: 20px;
+        }
+        }
+
+        @media (min-width: 700px) {
+        .tomorrow-schedule-card {
+            flex-basis: calc(calc(100% / 3) - 10px);
+        }
+
+        .tomorrow-schedule-card:not(:last-child) {
+            margin-right: 20px;
+        }
+        }
+
+        @media (min-width: 1100px) {
+        .tomorrow-schedule-card {
+            flex-basis: calc(calc(100% / 5) - 20px);
+        }
+
+        .tomorrow-schedule-card:not(:last-child) {
+            margin-right: 30px;
+        }
+        }
+
 
         footer {
             text-align: center;
@@ -95,6 +171,9 @@
 
         /* DESKTOP STYLES */
         @media screen and (min-width: 580px) {
+            .nav-item-container {
+                padding: 0px 20px;
+            }
             .nav-logo {
                 max-width: 200px;
             }
@@ -111,13 +190,28 @@
             }
             .now-playing-flexbox {
                 flex-direction: row;
-                gap: 20px;
             }
-            .now-playing-flexbox div {
-                row-gap: 20px;
+
+            .tomorrow-schedule-h2 {
+                padding: 0px;
+            }
+            .tomorrow-schedule-card:first-child {
+                margin-left: 0px;
+            }
+            .tomorrow-schedule-carousel-container {
+                position: relative;
             }
             
-            
+            .gradient-overlay {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 150px;
+                height: calc(100% - 20px);
+                background: linear-gradient(to right, transparent, #2E083D);
+                pointer-events: none;
+                z-index: 1;
+            }
         }
     </style>
 </head>
@@ -126,7 +220,7 @@
 
     <nav class="nav">
         <div class="wrapper nav-item-container">
-            <a href="#"><img class="nav-logo" src="/assets/2308_gogglebox_logo.png" alt="Gogglebox Logo"></a>
+            <a href="#"><img class="nav-logo" src="/assets/2308_gogglebox_logo.png"  loading="eager" alt="Gogglebox Logo"></a>
             <a href="#">Sign In</a>
         </div>
     </nav>
@@ -137,7 +231,7 @@
                 <a href="#">
                     <picture class="hero-image">
                         <source srcset="/assets/2308_desktop_hero.jpg" media="(min-width: 580px)" />
-                        <img src="/assets/2308_mobile_hero.jpg" alt="MDN" />
+                        <img src="/assets/2308_mobile_hero.jpg" alt="TV Show: What We Do In The Shadows - Title Artwork" />
                     </picture>
                 </a>
             </section>
@@ -147,23 +241,29 @@
 
                 <div class="now-playing-flexbox">
                     <div>
-                        <a href="#"><img src="/assets/2308_01_now_playing.jpg" alt=""></a>
+                        <a href="#"><img src="/assets/2308_01_now_playing.jpg" loading="lazy" alt="TV Show: Only Murders in the Building - Title Artwork"></a>
                     </div>
+
                     <div>
-                        <a href=""><img src="/assets/2308_02_now_playing.jpg" alt=""></a>
-                        <a href=""><img src="/assets/2308_03_now_playing.jpg" alt=""></a>
+                        <a href="#"><img src="/assets/2308_02_now_playing.jpg" loading="lazy" alt="TV Show: Yellowjackets - Title Artwork"></a>
+                        <a href="#"><img src="/assets/2308_03_now_playing.jpg" loading="lazy" alt="TV Show: Stranger Things - Title Artwork"></a>
                     </div>
                 </div>
 
             </section>
 
             <section class="section tomorrow-schedule-section">
-                <h2 class="section-h2">Tomorrow's Schedule</h2>
-                <!-- Create container -->
-                <!-- Create card image -->
-                <!-- Add carousel -->
-                <!-- Add end gradient -->
-                <!-- style scrollbar -->
+                <h2 class="section-h2 tomorrow-schedule-h2">Tomorrow's Schedule</h2>
+                <div class="tomorrow-schedule-carousel-container">
+                    <div class="tomorrow-schedule-carousel">
+
+                    
+                    </div>
+                    <div class="gradient-overlay"></div>
+
+                </div>
+                
+                
             </section>
 
         </div>
@@ -177,6 +277,30 @@
     <script>
         $(document).ready(function() {
             // TOMORROW'S SCHEDULE
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            const formattedDate = tomorrow.toISOString().split('T')[0];
+            
+
+            let apiURL = `https://api.tvmaze.com/schedule?country=US&date=${formattedDate}`;
+            console.log(apiURL);
+
+
+            $.ajax({url: apiURL, success: function(data){
+                const slicedData = data.slice(0, 24);
+                console.log(slicedData)
+                slicedData.forEach(show => {
+                    $('.tomorrow-schedule-carousel').append(
+                        `
+                            <div class="tomorrow-schedule-card">
+                                <img class="tomorrow-schedule-img" src="${show.show.image.original}" loading="lazy" alt="TV Show: ${show.show.name} - Title Artwork">
+                            </div>
+                        `
+                    )
+                });
+                
+            }});
 
             // FOOTER - GET CURRENT YEAR
             $('#currentYear').text(new Date().getFullYear());
