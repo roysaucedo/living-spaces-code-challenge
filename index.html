@@ -285,9 +285,8 @@
 
     <script>
         $(document).ready(function() {
-            // TOMORROW'S SCHEDULE
-            const today = new Date();                        
-            const tomorrow = new Date(today);                
+            // TOMORROW'S SCHEDULE                      
+            const tomorrow = new Date();                
             tomorrow.setDate(tomorrow.getDate() + 1);
             const formattedDate = tomorrow.toISOString().split('T')[0]; 
             
