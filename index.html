@@ -266,8 +266,8 @@
             <section class="section tomorrow-schedule-section">
                 <h2 class="section-h2 tomorrow-schedule-h2">Tomorrow's Schedule</h2>
                 <div class="tomorrow-schedule-carousel-container">
-                    <div class="tomorrow-schedule-carousel">
-                    </div>
+                    <ul class="tomorrow-schedule-carousel">
+                    </ul>
                     <div class="gradient-overlay"></div>
                 </div>
             </section>
@@ -295,11 +295,11 @@
                 slicedData.forEach(show => {
                     $('.tomorrow-schedule-carousel').append(
                         `
-                            <div class="tomorrow-schedule-card">
+                            <li class="tomorrow-schedule-card">
                                 <img class="tomorrow-schedule-img" 
                                     src="${show.show.image.original}" 
                                     loading="lazy" alt="TV Show: ${show.show.name} - Title Artwork">
-                            </div>
+                            </li>
                         `
                     )
                 });
